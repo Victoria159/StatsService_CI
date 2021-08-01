@@ -11,16 +11,32 @@ public class StatisticsService {
         long current_max_index = 0;
         long current_max = incomes[0];
         for (long income : incomes)
-            if (current_max < income)
-                current_max = income;
-                return current_max;
-    }
-    public long findMin(long[] incomes) {
-        long current_max_index = 0;
-        long current_max = incomes[0];
-        for (long income : incomes)
-            if (current_max > income)
+            if (current_max <= income)
                 current_max = income;
         return current_max;
     }
+
+    public long findMin(long[] incomes) {
+        long current_min_index = 0;
+        long current_min = incomes[0];
+        for (long income : incomes)
+            if (current_min > income)
+                current_min = income;
+        return current_min;
+    }
+
+    public long totalSum(long[] incomes) {
+        long sum = 0;
+        for (long monthSale : incomes) {
+            sum += monthSale;
+        }
+        return sum;
+    }
+
+    public long averageSalesAmount(long[] incomes) {
+        long averageSales = totalSum(incomes) / incomes.length;
+
+        return averageSales;
+    }
 }
+
